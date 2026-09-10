@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>TermChat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="screen-login" class="screen active">
+        <div class="terminal-box">
+            <h1 class="glitch-title">TERMCHAT</h1>
+            <div class="input-group">
+                <input type="text" id="username-input" autocomplete="off" maxlength="16" placeholder="...">
+            </div>
+            <button id="login-btn" class="term-btn">CONTINUE</button>
+        </div>
+    </div>
+
+    <div id="screen-lobby" class="screen">
+        <div class="lobby-header">
+            <h2>TERMCHAT</h2>
+        </div>
+        <div class="lobby-tabs">
+            <button id="tab-rooms-btn" class="tab-btn active">ROOMS</button>
+            <button id="tab-create-btn" class="tab-btn">CREATE ROOM</button>
+        </div>
+
+        <div id="tab-rooms" class="tab-content active">
+            <div id="rooms-list" class="rooms-container"></div>
+        </div>
+
+        <div id="tab-create" class="tab-content">
+            <div class="create-form">
+                <label>ROOM TITLE</label>
+                <input type="text" id="create-title" maxlength="16" autocomplete="off">
+                
+                <label>DESCRIPTION</label>
+                <input type="text" id="create-desc" maxlength="50" autocomplete="off">
+                
+                <label>USER LIMIT (3 - 32)</label>
+                <input type="number" id="create-limit" min="3" max="32" value="10">
+
+                <button id="create-submit-btn" class="term-btn">CREATE</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-chat" class="screen">
+        <div class="chat-header">
+            <div class="chat-title-info">
+                <span id="chat-room-title">---</span>
+                <span id="chat-room-count">[0/0]</span>
+            </div>
+            <button id="leave-room-btn" class="term-btn danger-btn">LEAVE ROOM</button>
+        </div>
+
+        <div id="chat-messages" class="messages-container"></div>
+
+        <div class="chat-input-bar">
+            <input type="text" id="message-input" maxlength="150" autocomplete="off" placeholder="Type your message...">
+            <button id="send-msg-btn" class="term-btn">SEND</button>
+        </div>
+
+        <div id="drawer-handle" class="drawer-handle-notch"></div>
+        <div id="drawer-panel" class="drawer-panel">
+            <div class="drawer-header">
+                <h3>PARTICIPANTS</h3>
+                <button id="drawer-close-btn" class="close-notch">✕</button>
+            </div>
+            <ul id="user-list"></ul>
+        </div>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-box">
+            <div id="modal-title" class="modal-title">ALERT</div>
+            <div id="modal-body" class="modal-body">...</div>
+            <button id="modal-close-btn" class="term-btn">OK</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
